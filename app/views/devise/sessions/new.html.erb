@@ -1,24 +1,23 @@
+<div class="text-center mt-5">
+<p class="fs-5 fw-bold">会員情報入力</p>
+</div>
 
-  <div class="text-center mt-5">
-  <p class="fs-5 fw-bold">会員情報入力</p>
-  </div>
+<%= form_with model: @user, url: user_session_path, local: true do |f| %>
+<div class="text-center text-danger mb-3">
+<%= flash[:alert]%>
+</div>
+<div class="field mb-3 w-75 mx-auto">
+  <%= f.label :メールアドレス, class:"form-label" %><br />
+  <%= f.email_field :email, autofocus: true, class:"form-control" %>
+</div>
 
-  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
- <div class="text-center text-danger mb-3">
-  <%= flash[:alert]%>
- </div>
-  <div class="field mb-3 w-75 mx-auto">
-    <%= f.label :メールアドレス, class:"form-label" %><br />
-    <%= f.email_field :email, autofocus: true, class:"form-control" %>
-  </div>
+<div class="field mb-3 w-75 mx-auto">
+  <%= f.label :パスワード, class: "form-label" %><br />
+  <%= f.password_field :password, class:"form-control", placeholder:"6文字以上の半角英数字" %>
+</div>
 
-  <div class="field mb-3 w-75 mx-auto">
-    <%= f.label :パスワード, class: "form-label" %><br />
-    <%= f.password_field :password, class:"form-control", placeholder:"6文字以上の半角英数字" %>
-  </div>
+<div class="actions mt-5 d-grid gap-2 col-6 mx-auto w-25">
+  <%= f.submit "ログイン", class: "btn btn-primary" %>
+</div>
 
-  <div class="actions mt-5 d-grid gap-2 col-6 mx-auto w-25">
-    <%= f.submit "ログイン", class: "btn btn-primary" %>
-  </div>
-
-  <% end %>
+<% end %>
