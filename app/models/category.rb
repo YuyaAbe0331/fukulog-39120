@@ -1,4 +1,4 @@
-class Clothing_category < ActiveHash::Base
+class Category < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: 'Tシャツ' },
@@ -27,4 +27,7 @@ class Clothing_category < ActiveHash::Base
     { id: 25, name: 'アンクルパンツ' },
     { id: 26, name: 'その他' }
   ]
+  include ActiveHash::Associations
+  has_many :garments
+  
   end

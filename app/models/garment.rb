@@ -3,5 +3,5 @@ class Garment < ApplicationRecord
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
-  belongs_to :clothing_category
+  belongs_to :category
 end

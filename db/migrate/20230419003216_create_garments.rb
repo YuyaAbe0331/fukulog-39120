@@ -3,8 +3,8 @@ class CreateGarments < ActiveRecord::Migration[6.0]
     create_table :garments do |t|
       t.string :name, null: false
       t.integer :genre_id, null: false
-      t.integer :clothing_category_id, null: false 
-      t.string :brand
+      t.integer :category_id, null: false 
+      t.string :brand, null: false 
       t.text :material
       t.text :size
       t.text :other
