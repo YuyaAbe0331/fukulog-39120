@@ -2,6 +2,7 @@ class GarmentsController < ApplicationController
   before_action :authenticate_user!, except: :index
 
   def index
+    @garments = Garment.includes(:user).order("created_at DESC")
   end
 
   def new
