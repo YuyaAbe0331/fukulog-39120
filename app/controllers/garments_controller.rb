@@ -22,7 +22,7 @@ class GarmentsController < ApplicationController
   end
 
   def show
-    @garment = Garment.find(params[:id])
+    @garment = Garment.find(params[:id]) 
   end
 
   private
