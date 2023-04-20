@@ -2,42 +2,26 @@
     <div class="bg-body-tertiary p-3 p-sm-5 mb-1">
       <div class="container">
         <h1 class="display-5 fw-bold">Fukulogへようこそ!</h1>
-        <p>Fukulogは、あなたの所持している洋服のブランドや素材、サイズなどの情報を記録することができます。<br>登録した情報から洋服を整理したり、オンラインショッピングの際に洋服のイメージの参考にすることができます。</p>
+        <p>Fukulogは、あなたの所持している洋服のブランドや素材、サイズなどの情報を記録することができます。<br>登録した情報から持っている洋服を整理したり、オンラインショッピングの際に洋服のイメージの参考にすることができます。</p>
         <%= link_to '洋服を登録する', new_garment_path, class:"btn btn-primary btn-lg" , role:"button" %>
       </div>
     </div>
     <div class="container mt-2">
-      <!-- 列の例 -->
       <div class="row">
+        <% @garments.each do |garment| %>
         <div class="col-md-4 mb-3">
           <div class="card">
-            <img src="images/test_image1.jpeg" class="card-img-top" alt="...">
+          <%= image_tag garment.image.variant(resize_to_fill: [500, 600]), class: "card-img-top" %>
             <div class="card-body">
-              <h5 class="card-title">オーバーサイズシャツ</h5>
-              <p class="card-text">カテゴリー：Tシャツ</p>
+              <h5 class="card-title"><%= garment.name %></h5>
+              <p class="card-text mb-1">カテゴリー：<%= garment.category.name %></p>
+              <p class="card-text mb-1">ブランド：<%= garment.brand %></p>
+              <p class="card-text">投稿者：<%= garment.user.nickname %></p>
               <a href="#" class="btn btn-primary">詳細を見る</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3">
-          <div class="card">
-            <img src="images/test_image2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">ダブルテーラードジャケット</h5>
-              <p class="card-text">カテゴリー：ジャケット</p>
-              <a href="#" class="btn btn-primary">詳細を見る</a>
-            </div>
-          </div>
-       </div>
-        <div class="col-md-4 mb-3">
-          <div class="card">
-            <img src="images/test_image3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">ハイウエストタックパンツ</h5>
-              <p class="card-text">カテゴリー：スラックス</p>
-              <a href="#" class="btn btn-primary">詳細を見る</a>
-            </div>
-          </div>
+        <% end %>
       </div>
 
       <hr>
