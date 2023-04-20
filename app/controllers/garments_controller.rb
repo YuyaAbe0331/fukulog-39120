@@ -21,6 +21,10 @@ class GarmentsController < ApplicationController
     redirect_to new_garment_path
   end
 
+  def show
+    @garment = Garment.find(params[:id])
+  end
+
   private
 
   def garment_params
