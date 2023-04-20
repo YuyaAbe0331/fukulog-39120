@@ -1,0 +1,19 @@
+<div class="card mx-auto">
+  <%= image_tag @garment.image, class: "figure-img img-fluid rounded mx-auto d-block" %>
+  <div class="card-body text-center">
+    <h5 class="card-title fw-bold mb-3"><%= @garment.name %></h5>
+    <p class="card-text mb-2">メインカテゴリー：<%= @garment.genre.name %></p>
+    <p class="card-text mb-2">サブカテゴリー：<%= @garment.category.name %></p>
+    <p class="card-text">ブランド：<%= @garment.brand %></p>
+  </div>
+  <ul class="list-group list-group-flush text-center">
+    <li class="list-group-item">素材：<%= @garment.material %></li>
+    <li class="list-group-item list-group-horizontal">サイズ：<%= @garment.size %></li>
+    <li class="list-group-item">その他：<%= @garment.other %></li>
+     <li class="list-group-item">投稿者：<%= @garment.user.nickname %></li>
+  </ul>
+</div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-center w-75 mx-auto mt-3 mb-3">
+  <button type="button" class="btn btn-outline-success me-md-2">編集する</button>
+  <button type="button" class="btn btn-outline-danger">削除する</button>
+</div>
