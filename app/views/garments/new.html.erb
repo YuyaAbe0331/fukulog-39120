@@ -1,17 +1,49 @@
-<form>
-  <div class="text-center mt-5">
+<div class="text-center mt-5">
   <p class="fs-5 fw-bold">洋服の情報を入力</p>
-  </div>
+</div>
+  <%= form_with(model: @garment, local: true) do |f| %>
 
-  <div class="mb-3 w-75 mx-auto">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  <%= render 'shared/error_messages', model: f.object %>
+
+  <div class="img-upload w-75 mx-auto mb-3 input-group-sm">
+    <%= f.label :画像をアップロード, class: "form-label" %>
+    <span class="badge badge-secondary bg-secondary">必須</span>
+    <%= f.file_field :image, class: "image_form form-control" %>
   </div>
-  <div class="mb-3  w-75 mx-auto">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+  <div class="mb-3 w-75 mx-auto">
+    <%= f.label :洋服名, class: "form-label" %>
+    <span class="badge badge-secondary bg-secondary">必須</span>
+    <%= f.text_field :name, class:"form-control", placeholder:"（例）テーラードジャケット" %>
+  </div>
+  <div class="mb-3 w-50 mx-auto">
+    <%= f.label :メインカテゴリー, class: "form-label" %>
+    <span class="badge badge-secondary bg-secondary">必須</span>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-select"}) %>
+  </div>
+    <div class="mb-3 w-50 mx-auto">
+    <%= f.label :サブカテゴリー, class: "form-label" %>
+    <span class="badge badge-secondary bg-secondary">必須</span>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-select"}) %>
+  </div>
+  <div class="mb-3 w-50 mx-auto">
+    <%= f.label :ブランド, class: "form-label" %>
+    <span class="badge badge-secondary bg-secondary">必須</span>
+    <%= f.text_field :brand, class:"form-control" %>
+  </div>
+    <div class="mb-3 w-75 mx-auto">
+    <%= f.label :素材, class: "form-label" %>
+    <%= f.text_area :material, class:"form-control", placeholder:"(例)コットン53%、ポリエステル30%、複合繊維17%" %>
+  </div>
+  <div class="mb-3 w-75 mx-auto">
+    <%= f.label :サイズ, class: "form-label" %>
+    <%= f.text_area :size, class:"form-control", placeholder:"(例)サイズ表記 S、着丈63、裄丈82.5、肩幅53.5、身幅62" %>
+  </div>
+    <div class="mb-3 w-75 mx-auto">
+    <%= f.label :その他, class: "form-label" %>
+    <%= f.text_area :other, class:"form-control" %>
   </div>
   <div class="actions mt-5 d-grid gap-2 col-6 mx-auto w-25">
-  <button type="submit" class="btn btn-primary">登録する</button>
+    <%= f.submit "登録する", class: "btn btn-primary" %>
   </div>
-</form>
+
+<% end %>
