@@ -8,23 +8,43 @@
 <%= render 'shared/error_messages', model: f.object %>
 
 <div class="field mb-3 w-75 mx-auto">
-  <%= f.label :ニックネーム, class:"form-label" %><br />
-  <%= f.text_field :nickname, autofocus: true, class:"form-control" %>
+  <%= f.label :メールアドレス, class:"form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
+  <%= f.email_field :email, autofocus: true, class:"form-control" %>
 </div>
 
 <div class="field mb-3 w-75 mx-auto">
-  <%= f.label :メールアドレス, class:"form-label" %><br />
-  <%= f.email_field :email, class:"form-control" %>
-</div>
-
-<div class="field mb-3 w-75 mx-auto">
-  <%= f.label :パスワード, class: "form-label" %><br />
+  <%= f.label :パスワード, class: "form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
   <%= f.password_field :password, class:"form-control", placeholder:"6文字以上の半角英数字" %>
 </div>
 
 <div class="field mb-3 w-75 mx-auto">
-  <%= f.label :パスワード（確認）, class: "form-label" %><br />
+  <%= f.label :パスワード（確認）, class: "form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
   <%= f.password_field :password_confirmation, class:"form-control", placeholder:"同じパスワードを入力して下さい" %>
+</div>
+
+<div class="field mb-3 w-75 mx-auto">
+  <%= f.label :ニックネーム, class:"form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
+  <%= f.text_field :nickname, class:"form-control" %>
+</div>
+
+<div class="mb-3 w-50 mx-auto">
+  <%= f.label :性別, class: "form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
+  <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"form-select"}) %>
+</div>
+
+<div class="mb-3 w-50 mx-auto">
+  <%= f.label :身長, class: "form-label" %>
+  <%= f.collection_select(:height_id, Height.all, :id, :name, {}, {class:"form-select"}) %>
+</div>
+
+<div class="mb-3 w-50 mx-auto">
+  <%= f.label :体重, class: "form-label" %>
+  <%= f.collection_select(:weight_id, Weight.all, :id, :name, {}, {class:"form-select"}) %>
 </div>
 
 <div class="actions mt-5 d-grid gap-2 col-6 mx-auto w-25">
