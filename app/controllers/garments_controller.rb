@@ -1,6 +1,7 @@
 class GarmentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_garment, only: [:show, :edit, :update]
+  before_action :set_garment, only: [:show, :edit, :update, :destroy]
+  before_action :check_current_user, only: [:edit, :destroy]
 
   def index
     @garments = Garment.includes(:user).order("created_at DESC")
@@ -26,9 +27,6 @@ class GarmentsController < ApplicationController
   end
 
   def edit
-    if user_signed_in? && current_user.id != @garment.user.id
-      redirect_to root_path
-    end
   end
 
   def update
@@ -40,6 +38,12 @@ class GarmentsController < ApplicationController
   end
 
 
+  def destroy
+    if @garment.destroy
+      redirect_to root_path
+    end
+  end
+
   private
 
   def garment_params
@@ -48,6 +52,12 @@ class GarmentsController < ApplicationController
 
   def set_garment
     @garment = Garment.find(params[:id])
+  end
+
+  def check_current_user
+    if user_signed_in? && current_user.id != @garment.user.id
+      redirect_to root_path
+    end
   end
 
 end
