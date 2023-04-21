@@ -13,7 +13,9 @@
      <li class="list-group-item">投稿者：<%= @garment.user.nickname %></li>
   </ul>
 </div>
+<% if user_signed_in? && current_user.id == @garment.user.id %>
 <div class="d-grid gap-2 d-md-flex justify-content-md-center w-75 mx-auto mt-3 mb-3">
-  <button type="button" class="btn btn-outline-success me-md-2">編集する</button>
+  <%= link_to "編集する", edit_garment_path(@garment.id), method: :get, class: "btn btn-outline-success me-md-2" %>  
   <button type="button" class="btn btn-outline-danger">削除する</button>
 </div> 
+<% end %>
