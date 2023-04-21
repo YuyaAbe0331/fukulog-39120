@@ -1,0 +1,20 @@
+<div class="container mt-2">
+  <div class="row">
+    <% garments.each do |garment| %>
+    <div class="col-md-3 mb-3">
+      <div class="card">
+      <%= link_to garment_path(garment.id) do %>
+      <%= image_tag garment.image.variant(resize_to_fill: [500, 600]), class: "card-img-top" %>
+      <% end %>
+        <div class="card-body">
+          <h5 class="card-title text-truncate"><%= garment.name %></h5>
+          <p class="card-text mb-1 text-truncate">カテゴリー：<%= garment.category.name %></p>
+          <p class="card-text mb-1 text-truncate">ブランド：<%= garment.brand %></p>
+          <p class="card-text text-truncate">投稿者：<%= link_to garment.user.nickname, user_path(garment.user.id), class:"link-dark link-body-emphasis"%></p>
+          <%= link_to '詳細を見る', garment_path(garment.id), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div><!-- /.container -->

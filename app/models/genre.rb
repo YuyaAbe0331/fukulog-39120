@@ -1,11 +1,10 @@
 class Genre < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
-    { id: 2, name: 'トップス' },
-    { id: 3, name: 'アウター' },
-    { id: 4, name: 'ボトムス' },
-    { id: 5, name: 'スカート' },
-    { id: 6, name: 'その他' }
+    { id: 2, name: 'レディース' },
+    { id: 3, name: 'メンズ' },
+    { id: 4, name: 'ユニセックス' },
+    { id: 5, name: 'キッズ' }
   ]
 
   include ActiveHash::Associations
