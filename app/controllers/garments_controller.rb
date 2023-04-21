@@ -1,5 +1,6 @@
 class GarmentsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_garment, only: [:show, :edit, :update]
 
   def index
     @garments = Garment.includes(:user).order("created_at DESC")
@@ -22,13 +23,31 @@ class GarmentsController < ApplicationController
   end
 
   def show
-    @garment = Garment.find(params[:id]) 
   end
+
+  def edit
+    if user_signed_in? && current_user.id != @garment.user.id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    if @garment.update(garment_params)
+      redirect_to garment_path(@garment)
+    else
+      render :edit
+    end
+  end
+
 
   private
 
   def garment_params
     params.require(:garment).permit(:image, :name, :genre_id, :category_id, :brand, :material, :size, :other).merge(user_id: current_user.id)
+  end
+
+  def set_garment
+    @garment = Garment.find(params[:id])
   end
 
 end
