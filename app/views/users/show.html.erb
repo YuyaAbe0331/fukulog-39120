@@ -1,0 +1,19 @@
+<div class="text-center">
+  <h5 class="fw-bold mt-3 mb-3"><%= @user.nickname %>さんの情報</h5>
+</div>
+<% if user_signed_in? && current_user.id == @user.id %>
+<div class="d-grid gap-2 d-md-flex justify-content-md-center w-75 mx-auto mt-3 mb-3">
+  <%= link_to "編集する", edit_user_path(@user.id), method: :get, class: "btn btn-outline-success me-md-2" %> 
+</div> 
+<% end %>
+<div class="card mx-auto w-75">
+  <ul class="list-group list-group-flush text-center">
+    <li class="list-group-item">性別：<%= @user.sex.name %></li>
+    <li class="list-group-item list-group-horizontal">身長：<%= @user.height.name %></li>
+    <li class="list-group-item">体重：<%= @user.weight.name %></li>
+  </ul>
+</div>
+<div class="text-center">
+  <h5 class="fw-bold mt-3 mb-3"><%= @user.nickname %>さんの洋服一覧</h5>
+</div>
+<%= render partial: "shared/garments", locals: { garments: @garments } %>

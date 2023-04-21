@@ -1,0 +1,42 @@
+<div class="text-center mt-5">
+<p class="fs-5 fw-bold">会員情報を編集</p>
+</div>
+
+<%= form_with model: current_user, local: true do |f| %>
+
+<%= render 'shared/error_messages', model: f.object %>
+
+<div class="field mb-3 w-75 mx-auto">
+  <%= f.label :メールアドレス, class:"form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
+  <%= f.email_field :email, autofocus: true, class:"form-control" %>
+</div>
+
+<div class="field mb-3 w-75 mx-auto">
+  <%= f.label :ニックネーム, class:"form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
+  <%= f.text_field :nickname, class:"form-control" %>
+</div>
+
+<div class="mb-3 w-50 mx-auto">
+  <%= f.label :性別, class: "form-label" %>
+  <span class="badge badge-secondary bg-secondary">必須</span>
+  <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"form-select"}) %>
+</div>
+
+<div class="mb-3 w-50 mx-auto">
+  <%= f.label :身長, class: "form-label" %>
+  <%= f.collection_select(:height_id, Height.all, :id, :name, {}, {class:"form-select"}) %>
+</div>
+
+<div class="mb-3 w-50 mx-auto">
+  <%= f.label :体重, class: "form-label" %>
+  <%= f.collection_select(:weight_id, Weight.all, :id, :name, {}, {class:"form-select"}) %>
+</div>
+
+<div class="actions mt-5 d-grid gap-2 col-6 mx-auto w-25">
+  <%= f.submit "編集する", class: "btn btn-primary" %>
+  <%= link_to 'もどる', user_path(@user.id), class: "btn btn-secondary" %>
+</div>
+
+<% end %>

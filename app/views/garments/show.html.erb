@@ -10,7 +10,7 @@
     <li class="list-group-item">素材：<%= @garment.material %></li>
     <li class="list-group-item list-group-horizontal">サイズ：<%= @garment.size %></li>
     <li class="list-group-item">その他：<%= @garment.other %></li>
-     <li class="list-group-item">投稿者：<%= @garment.user.nickname %></li>
+    <li class="list-group-item">投稿者：<%= link_to @garment.user.nickname, user_path(@garment.user.id), class:"link-dark link-body-emphasis"%></li>
   </ul>
 </div>
 <% if user_signed_in? && current_user.id == @garment.user.id %>
