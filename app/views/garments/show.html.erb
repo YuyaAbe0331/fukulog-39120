@@ -2,8 +2,8 @@
   <%= image_tag @garment.image, class: "figure-img img-fluid rounded mx-auto d-block" %>
   <div class="card-body text-center">
     <h5 class="card-title fw-bold mb-3"><%= @garment.name %></h5>
-    <p class="card-text mb-2">メインカテゴリー：<%= @garment.genre.name %></p>
-    <p class="card-text mb-2">サブカテゴリー：<%= @garment.category.name %></p>
+    <p class="card-text mb-2"><%= @garment.genre.name %></p>
+    <p class="card-text mb-2">カテゴリー：<%= @garment.category.name %></p>
     <p class="card-text">ブランド：<%= @garment.brand %></p>
   </div>
   <ul class="list-group list-group-flush text-center">

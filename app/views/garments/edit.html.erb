@@ -16,12 +16,12 @@
     <%= f.text_field :name, class:"form-control", placeholder:"（例）テーラードジャケット" %>
   </div>
   <div class="mb-3 w-50 mx-auto">
-    <%= f.label :メインカテゴリー, class: "form-label" %>
+    <%= f.label :ジャンル, class: "form-label" %>
     <span class="badge badge-secondary bg-secondary">必須</span>
     <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-select"}) %>
   </div>
     <div class="mb-3 w-50 mx-auto">
-    <%= f.label :サブカテゴリー, class: "form-label" %>
+    <%= f.label :カテゴリー, class: "form-label" %>
     <span class="badge badge-secondary bg-secondary">必須</span>
     <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-select"}) %>
   </div>
