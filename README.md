@@ -1,24 +1,24 @@
-# README
+# アプリケーション名
+Fukulog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+自分の持っている洋服の情報を登録、閲覧することができます。また、他のユーザーが登録した洋服の情報を閲覧することができます
 
-Things you may want to cover:
+# URL
+https://fukulog-39120.onrender.com/
 
-* Ruby version
+# テスト用アカウント
+- メールアドレス：test@test1
+- パスワード：123456
 
-* System dependencies
+# 利用方法
+## 洋服投稿
+1. トップページからメールアドレス、パスワード、ニックネーム、性別、身長、体重を記載して新規登録を行います
+2. 洋服を登録するボタンからボタンから画像、洋服名、ジャンル（レディース、メンズ、ユニセックス、キッズ）、カテゴリー（Tシャツ、シャツ、パーカー、スウェット、ニット・セーター、ベスト、コート、ジャケット、ブルゾン、スカート、ミニスカート、ロングスカート、ワンピース、デニム、スラックス、チノパン、ショートパンツ、ハーフパンツ、ワイドパンツ、スキニーパンツ、カーゴバンツ、ジョガーパンツ、アンクルパンツ、その他）、ブランド、素材、サイズ、その他を記載して洋服を登録することができます
 
-* Configuration
+## 洋服一覧
+1. 一覧ページに投稿内容の画像、洋服名、カテゴリー、ブランド、投稿者名が表示され、画像か詳細を見るボタンを押すと洋服詳細ページに遷移します
+2. 投稿者名を押すとユーザー詳細ページに遷移します
 
-* Database creation
+## 洋服詳細
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
