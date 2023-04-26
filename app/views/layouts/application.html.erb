@@ -21,7 +21,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to current_user.nickname, "#", class: "my-page nav-link active" %>
+          <%= link_to current_user.nickname, user_path(current_user.id), class: "my-page nav-link active" %>
         </li>
         <li class="nav-item">
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout nav-link active" %>
@@ -36,10 +36,10 @@
         <% end %>
         <li class="nav-item dropdown">
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
+      <%= form_with(url: search_garments_path, local: true, method: :get, class: "d-flex") do |form| %>
+      <%= form.text_field :keyword, placeholder: "キーワード検索", class: "form-control me-2" %>
+      <%= form.submit "Search", class: "btn btn-outline-light" %>
+      <% end %>
     </div>
   </div>
 </nav>

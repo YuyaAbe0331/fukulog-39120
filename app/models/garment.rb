@@ -10,6 +10,14 @@ class Garment < ApplicationRecord
   belongs_to :genre
   belongs_to :category
 
+  def self.search(search)
+    if search != ""
+      Garment.where('name LIKE(?)', "%#{search}%")
+    else
+      Garment.all
+    end
+  end
+
   def was_attached?
     image.attached?
   end
