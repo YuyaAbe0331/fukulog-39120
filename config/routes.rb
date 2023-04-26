@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root to: "garments#index"
   get 'users', to: 'users#redirect_user'
   get 'garments', to: 'garments#redirect_garment'
-  resources :garments
+  resources :garments do
+    collection do
+      get 'search'
+    end
+  end
   resources :users, only: [:show, :edit, :update]
 end

@@ -1,5 +1,5 @@
 class GarmentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_garment, only: [:show, :edit, :update, :destroy]
   before_action :check_current_user, only: [:edit, :destroy]
 
@@ -24,6 +24,10 @@ class GarmentsController < ApplicationController
   end
 
   def show
+  end
+
+  def search
+    @garments = Garment.search(params[:keyword])
   end
 
   def edit
