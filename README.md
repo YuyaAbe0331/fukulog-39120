@@ -8,6 +8,8 @@ Fukulog
 https://fukulog-39120.onrender.com/
 
 # テスト用アカウント
+- ユーザー認証名：admin
+- ユーザー認証パス：2222
 - メールアドレス：test@test1
 - パスワード：123456
 
