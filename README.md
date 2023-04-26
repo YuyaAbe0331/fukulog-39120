@@ -54,10 +54,11 @@ https://docs.google.com/spreadsheets/d/1Hzusfen08VwkehQGGqOJWuSYPpBh4jrLdJIUMKNf
 現在は検索機能に着手中
 
 # データベース設計
-(https://user-images.githubusercontent.com/127222327/234263051-2c7e6ab0-8137-4520-967f-2ba23e0b3861.png)
+![fukulog](https://user-images.githubusercontent.com/127222327/234435121-6e3c64a5-6767-42d5-8ccd-7d4166680664.png)
+
 
 # 画面遷移図
-(https://user-images.githubusercontent.com/127222327/234263202-e4172cb9-2141-4ad7-b474-b36d53a212bb.png)
+![gamenseni](https://user-images.githubusercontent.com/127222327/234435018-c1b209b4-7a63-426a-93fd-ea60302ba3c0.png)
 
 # 開発環境
 - ruby 2.6.5
