@@ -9,8 +9,8 @@ FactoryBot.define do
     other { Faker::Lorem.paragraph }
     association :user
 
-    after(:build) do |item|
-      item.image.attach(io: File.open('public/images/test_image1.jpeg'), filename: 'test_image1.jpeg')
+    after(:build) do |garment|
+      garment.image.attach(io: File.open('public/images/test_image1.jpeg'), filename: 'test_image1.jpeg')
     end
   end
 end
