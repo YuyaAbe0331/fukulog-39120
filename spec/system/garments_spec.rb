@@ -1,5 +1,12 @@
 require 'rails_helper'
 
+def basic_pass(path)
+  username = ENV["BASIC_AUTH_USER"]
+  password = ENV["BASIC_AUTH_PASSWORD"]
+  visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
+end
+
+
 RSpec.describe "Garments", type: :system do
   before do
     @user = FactoryBot.create(:user)
@@ -7,6 +14,11 @@ RSpec.describe "Garments", type: :system do
   context '洋服投稿ができるとき'do
     it 'ログインしたユーザーは新規投稿できる' do
       # ログインする
+      basic_pass new_user_session_path
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @user.email
+      fill_in 'パスワード', with: @user.password
+      find('input.btn-primary').click
       # 新規投稿ページへのボタンがあることを確認する
       # 投稿ページに移動する
       # フォームに情報を入力する
