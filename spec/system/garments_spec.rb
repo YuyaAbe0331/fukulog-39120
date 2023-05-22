@@ -19,8 +19,11 @@ RSpec.describe "Garments", type: :system do
       fill_in 'メールアドレス', with: @user.email
       fill_in 'パスワード', with: @user.password
       find('input.btn-primary').click
+      expect(current_path).to eq(root_path)
       # 新規投稿ページへのボタンがあることを確認する
+      expect(page).to have_content('洋服を登録する')
       # 投稿ページに移動する
+      visit new_garment_path
       # フォームに情報を入力する
       # 送信するとGarmentsモデルのカウントが1上がることを確認する
       # 投稿完了ページに遷移することを確認する
