@@ -24,7 +24,10 @@ RSpec.describe "Garments", type: :system do
       expect(page).to have_content('洋服を登録する')
       # 投稿ページに移動する
       visit new_garment_path
+      # 添付する画像を定義する
+      image_path = Rails.root.join('public/images/test_image1.jpeg')
       # フォームに情報を入力する
+      attach_file('garment[image]', image_path, make_visible: true)
       # 送信するとGarmentsモデルのカウントが1上がることを確認する
       # 投稿完了ページに遷移することを確認する
       # 「投稿が完了しました」の文字があることを確認する
