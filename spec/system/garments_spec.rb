@@ -28,6 +28,7 @@ RSpec.describe "Garments", type: :system do
       image_path = Rails.root.join('public/images/test_image1.jpeg')
       # フォームに情報を入力する
       attach_file('garment[image]', image_path, make_visible: true)
+      fill_in '洋服名', with: Faker::Lorem.sentence
       # 送信するとGarmentsモデルのカウントが1上がることを確認する
       # 投稿完了ページに遷移することを確認する
       # 「投稿が完了しました」の文字があることを確認する
