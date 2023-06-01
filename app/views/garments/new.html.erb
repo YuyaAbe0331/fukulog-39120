@@ -26,20 +26,20 @@
     <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-select"}) %>
   </div>
   <div class="mb-3 w-50 mx-auto">
-    <%= f.label :ブランド, class: "form-label" %>
+    <%= f.label :ブランド, class: "form-label", for:"garment_brand" %>
     <span class="badge badge-secondary bg-secondary">必須</span>
     <%= f.text_field :brand, class:"form-control" %>
   </div>
     <div class="mb-3 w-75 mx-auto">
-    <%= f.label :素材, class: "form-label" %>
+    <%= f.label :素材, class: "form-label", for:"garment_material" %>
     <%= f.text_area :material, class:"form-control", placeholder:"(例)コットン53%、ポリエステル30%、複合繊維17%" %>
   </div>
   <div class="mb-3 w-75 mx-auto">
-    <%= f.label :サイズ, class: "form-label" %>
+    <%= f.label :サイズ, class: "form-label", for:"garment_size" %>
     <%= f.text_area :size, class:"form-control", placeholder:"(例)サイズ表記 S、着丈63、裄丈82.5、肩幅53.5、身幅62" %>
   </div>
     <div class="mb-3 w-75 mx-auto">
-    <%= f.label :その他, class: "form-label" %>
+    <%= f.label :その他, class: "form-label", for:"garment_other" %>
     <%= f.text_area :other, class:"form-control" %>
   </div>
   <div class="actions mt-5 mb-5 d-grid gap-2 col-6 mx-auto w-25">
