@@ -65,7 +65,11 @@ RSpec.describe "Garments", type: :system do
   context '洋服投稿ができないとき'do
     it 'ログインしていないと新規投稿ページに遷移できない' do
       # トップページに遷移する
-      # 新規投稿ページへのボタンがないことを確認する
+      basic_pass root_path
+      visit root_path
+      # 新規投稿ページへ遷移しようとするとログイン画面にリダイレクトする
+      visit new_garment_path
+      expect(current_path).to eq(new_user_session_path)
     end
   end
 end
