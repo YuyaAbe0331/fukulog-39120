@@ -82,13 +82,15 @@ RSpec.describe '投稿内容の編集', type: :system do
   context '投稿編集ができるとき' do
     it 'ログインしたユーザーは自分が投稿したツイートの編集ができる' do
       # @garment1を投稿したユーザーでログインする
-      # ログインする
       basic_pass new_user_session_path
       visit new_user_session_path
       fill_in 'メールアドレス', with: @garment1.user.email
       fill_in 'パスワード', with: @garment1.user.password
       find('input.btn-primary').click
+      expect(current_path).to eq(root_path)
       # @garment1の詳細ページに遷移する
+      visit garment_path(@garment1.id)
+      expect(current_path).to eq(garment_path(@garment1.id))
       # 編集ページのボタンが存在する
       # 編集ページへ遷移する
       # すでに投稿済みの内容がフォームに入っていることを確認する
