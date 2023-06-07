@@ -92,6 +92,7 @@ RSpec.describe '投稿内容の編集', type: :system do
       visit garment_path(@garment1.id)
       expect(current_path).to eq(garment_path(@garment1.id))
       # 編集ページのボタンが存在する
+      expect(page).to have_content('編集する')
       # 編集ページへ遷移する
       # すでに投稿済みの内容がフォームに入っていることを確認する
       # 投稿内容を編集する
