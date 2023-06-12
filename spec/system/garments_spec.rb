@@ -96,6 +96,9 @@ RSpec.describe '投稿内容の編集', type: :system do
       # 編集ページへ遷移する
       visit edit_garment_path(@garment1.id)
       # すでに投稿済みの内容がフォームに入っていることを確認する
+      expect(
+        find('#garment_name').value
+      ).to eq(@garment1.name)
       # 投稿内容を編集する
       # 編集してもGarmentモデルのカウントは変わらないことを確認する
       # 編集完了後、詳細ページに遷移する
