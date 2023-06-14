@@ -105,6 +105,18 @@ RSpec.describe '投稿内容の編集', type: :system do
       expect(
         find('#garment_category_id').value
       ).to eq "#{@garment1.category_id}"
+      expect(
+        find('#garment_brand').value
+      ).to eq(@garment1.brand)
+      expect(
+        find('#garment_material').value
+      ).to eq(@garment1.material)
+      expect(
+        find('#garment_size').value
+      ).to eq(@garment1.size)
+      expect(
+        find('#garment_other').value
+      ).to eq(@garment1.other)
       # 投稿内容を編集する
       # 編集してもGarmentモデルのカウントは変わらないことを確認する
       # 編集完了後、詳細ページに遷移する
