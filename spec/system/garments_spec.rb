@@ -118,6 +118,11 @@ RSpec.describe '投稿内容の編集', type: :system do
         find('#garment_other').value
       ).to eq(@garment1.other)
       # 投稿内容を編集する
+      image_path = Rails.root.join('public/images/test_image2.jpeg')
+      attach_file('garment[image]', image_path, make_visible: true)
+      fill_in 'garment_name', with: Faker::Lorem.sentence
+      select 'キッズ', from: 'garment[genre_id]'
+      select 'その他', from: 'garment[category_id]'
       # 編集してもGarmentモデルのカウントは変わらないことを確認する
       # 編集完了後、詳細ページに遷移する
       # 先ほど変更した内容のツイートが存在することを確認する（image）
