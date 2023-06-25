@@ -125,6 +125,7 @@ RSpec.describe '投稿内容の編集', type: :system do
       select 'その他', from: 'garment[category_id]'
       fill_in 'garment_brand', with: Faker::Lorem.sentence
       fill_in 'garment_material', with: Faker::Lorem.paragraph 
+      fill_in 'garment_size', with: Faker::Lorem.paragraph 
       # 編集してもGarmentモデルのカウントは変わらないことを確認する
       # 編集完了後、詳細ページに遷移する
       # 先ほど変更した内容のツイートが存在することを確認する（image）
