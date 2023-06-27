@@ -128,6 +128,9 @@ RSpec.describe '投稿内容の編集', type: :system do
       fill_in 'garment_size', with: Faker::Lorem.paragraph 
       fill_in 'garment_other', with: Faker::Lorem.paragraph 
       # 編集してもGarmentモデルのカウントは変わらないことを確認する
+      expect{
+        find('input.btn-primary').click
+      }.to change { Garment.count }.by(0)
       # 編集完了後、詳細ページに遷移する
       # 先ほど変更した内容のツイートが存在することを確認する（image）
       # 先ほど変更した内容のツイートが存在することを確認する（name）
