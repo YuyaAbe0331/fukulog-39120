@@ -132,6 +132,7 @@ RSpec.describe '投稿内容の編集', type: :system do
         find('input.btn-primary').click
       }.to change { Garment.count }.by(0)
       # 編集完了後、詳細ページに遷移する
+      expect(current_path).to eq(garment_path(@garment1.id))
       # 先ほど変更した内容のツイートが存在することを確認する（image）
       # 先ほど変更した内容のツイートが存在することを確認する（name）
       # 先ほど変更した内容のツイートが存在することを確認する（genre.name）
