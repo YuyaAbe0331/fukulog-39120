@@ -134,6 +134,7 @@ RSpec.describe '投稿内容の編集', type: :system do
       # 編集完了後、詳細ページに遷移する
       expect(current_path).to eq(garment_path(@garment1.id))
       # 先ほど変更した内容のツイートが存在することを確認する（image）
+      expect(page).to have_selector("img[src$='test_image2.jpeg']")
       # 先ほど変更した内容のツイートが存在することを確認する（name）
       # 先ほど変更した内容のツイートが存在することを確認する（genre.name）
       # 先ほど変更した内容のツイートが存在することを確認する（category.name）
