@@ -79,7 +79,7 @@ RSpec.describe '投稿内容の編集', type: :system do
     @garment1 = FactoryBot.create(:garment)
     @garment2 = FactoryBot.create(:garment)
   end
-  context '投稿編集ができるとき' do
+  context '投稿編集ができるとき' do 
     it 'ログインしたユーザーは自分が投稿したツイートの編集ができる' do
       # @garment1を投稿したユーザーでログインする
       basic_pass new_user_session_path
@@ -120,28 +120,33 @@ RSpec.describe '投稿内容の編集', type: :system do
       # 投稿内容を編集する
       image_path = Rails.root.join('public/images/test_image2.jpeg')
       attach_file('garment[image]', image_path, make_visible: true)
-      fill_in 'garment_name', with: Faker::Lorem.sentence
+      fill_in 'garment_name', with: "#{@garment1.name}+abc"
       select 'キッズ', from: 'garment[genre_id]'
       select 'その他', from: 'garment[category_id]'
-      fill_in 'garment_brand', with: Faker::Lorem.sentence
-      fill_in 'garment_material', with: Faker::Lorem.paragraph 
-      fill_in 'garment_size', with: Faker::Lorem.paragraph 
-      fill_in 'garment_other', with: Faker::Lorem.paragraph 
+      fill_in 'garment_brand', with: "#{@garment1.brand}+abc"
+      fill_in 'garment_material', with: "#{@garment1.material}+abc"
+      fill_in 'garment_size', with: "#{@garment1.size}+abc"
+      fill_in 'garment_other', with: "#{@garment1.other}+abc"
       # 編集してもGarmentモデルのカウントは変わらないことを確認する
       expect{
         find('input.btn-primary').click
       }.to change { Garment.count }.by(0)
       # 編集完了後、詳細ページに遷移する
       expect(current_path).to eq(garment_path(@garment1.id))
-      # 先ほど変更した内容のツイートが存在することを確認する（image）
+      # 先ほど変更した内容が存在することを確認する（image）
       expect(page).to have_selector("img[src$='test_image2.jpeg']")
-      # 先ほど変更した内容のツイートが存在することを確認する（name）
-      # 先ほど変更した内容のツイートが存在することを確認する（genre.name）
-      # 先ほど変更した内容のツイートが存在することを確認する（category.name）
-      # 先ほど変更した内容のツイートが存在することを確認する（brand）
-      # 先ほど変更した内容のツイートが存在することを確認する（material）
-      # 先ほど変更した内容のツイートが存在することを確認する（other）
-      # 先ほど変更した内容のツイートが存在することを確認する（user.nickname）
+      # 先ほど変更した内容が存在することを確認する（name）
+      expect(page).to have_content("#{@garment1.name}+abc")
+      # 先ほど変更した内容が存在することを確認する（genre.name）
+      expect(page).to have_content("キッズ")
+      # 先ほど変更した内容が存在することを確認する（category.name）
+      expect(page).to have_content("その他")
+      # 先ほど変更した内容が存在することを確認する（brand）
+      expect(page).to have_content("#{@garment1.brand}+abc")
+      # 先ほど変更した内容が存在することを確認する（material）
+      expect(page).to have_content("#{@garment1.material}+abc")
+      # 先ほど変更した内容が存在することを確認する（other）
+      expect(page).to have_content("#{@garment1.other}+abc")
     end
   end
   context '投稿内容編集ができないとき' do
