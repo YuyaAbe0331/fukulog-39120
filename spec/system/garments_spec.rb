@@ -152,7 +152,15 @@ RSpec.describe '投稿内容の編集', type: :system do
   context '投稿内容編集ができないとき' do
     it 'ログインしたユーザーは自分以外が投稿した洋服の編集画面には遷移できない' do
       # @garment1を投稿したユーザーでログインする
+      basic_pass new_user_session_path
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @garment1.user.email
+      fill_in 'パスワード', with: @garment1.user.password
+      find('input.btn-primary').click
+      expect(current_path).to eq(root_path)
       # @garment2の詳細ページに「編集」へのリンクがないことを確認する
+      visit garment_path(@garment2.id)
+      expect(page).to have_no_content('編集する')
     end
     it 'ログインしていないと洋服の編集画面には遷移できない' do
       # トップページにいる
