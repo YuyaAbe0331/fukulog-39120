@@ -164,8 +164,14 @@ RSpec.describe '投稿内容の編集', type: :system do
     end
     it 'ログインしていないと洋服の編集画面には遷移できない' do
       # トップページにいる
+      basic_pass root_path
+      visit root_path
       # @garment1の詳細ページに「編集」へのリンクがないことを確認する
+      visit garment_path(@garment1.id)
+      expect(page).to have_no_content('編集する')
       # @garment2の詳細ページに「編集」へのリンクがないことを確認する
+      visit garment_path(@garment2.id)
+      expect(page).to have_no_content('編集する')
     end
   end
 end
