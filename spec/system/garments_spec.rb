@@ -174,34 +174,36 @@ RSpec.describe '投稿内容の編集', type: :system do
       expect(page).to have_no_content('編集する')
     end
   end
-  RSpec.describe '投稿内容の削除', type: :system do
-    before do
-      @garment1 = FactoryBot.create(:garment)
-      @garment2 = FactoryBot.create(:garment)
+end
+
+RSpec.describe '投稿内容の削除', type: :system do
+  before do
+    @garment1 = FactoryBot.create(:garment)
+    @garment2 = FactoryBot.create(:garment)
+  end
+  context '投稿内容が削除できるとき' do
+    it 'ログインしたユーザーは自らが投稿した投稿内容を削除できる' do
+      # garment1を投稿したユーザーでログインする
+      # garment1に「削除」へのリンクがあることを確認する
+      # 投稿を削除するとレコードの数が1減ることを確認する
+      # 削除完了後、TOPページに遷移したことを確認する
+      # トップページに遷移する
+      # トップページにはgarment1の内容が存在しないことを確認する（image）
+      # トップページにはgarment1の内容が存在しないことを確認する（name）
+      # トップページにはgarment1の内容が存在しないことを確認する（category.name）
+      # トップページにはgarment1の内容が存在しないことを確認する（brand.name）
+      # トップページにはgarment1の内容が存在しないことを確認する（user.nickname）
     end
-    context '投稿内容が削除できるとき' do
-      it 'ログインしたユーザーは自らが投稿した投稿内容を削除できる' do
-        # garment1を投稿したユーザーでログインする
-        # garment1に「削除」へのリンクがあることを確認する
-        # 投稿を削除するとレコードの数が1減ることを確認する
-        # 削除完了後、TOPページに遷移したことを確認する
-        # トップページに遷移する
-        # トップページにはgarment1の内容が存在しないことを確認する（image）
-        # トップページにはgarment1の内容が存在しないことを確認する（name）
-        # トップページにはgarment1の内容が存在しないことを確認する（category.name）
-        # トップページにはgarment1の内容が存在しないことを確認する（brand.name）
-        # トップページにはgarment1の内容が存在しないことを確認する（user.nickname）
-      end
+  end
+  context '投稿内容が削除ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿した投稿の削除ができない' do
+      # garment1を投稿したユーザーでログインする
+      # garment2に「削除」へのリンクがないことを確認する
     end
-    context '投稿内容が削除ができないとき' do
-      it 'ログインしたユーザーは自分以外が投稿した投稿の削除ができない' do
-        # garment1を投稿したユーザーでログインする
-        # garment2に「削除」へのリンクがないことを確認する
-      end
-      it 'ログインしていないと詳細ページに削除ボタンがない' do
-        # トップページに移動する
-        # garment1に「削除」へのリンクがないことを確認する
-        # garment2に「削除」へのリンクがないことを確認する
-      end
+    it 'ログインしていないと詳細ページに削除ボタンがない' do
+      # トップページに移動する
+      # garment1に「削除」へのリンクがないことを確認する
+      # garment2に「削除」へのリンクがないことを確認する
     end
+  end
 end
