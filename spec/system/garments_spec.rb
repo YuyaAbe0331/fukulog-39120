@@ -182,6 +182,12 @@ RSpec.describe '投稿内容の編集', type: :system do
     context '投稿内容が削除できるとき' do
       it 'ログインしたユーザーは自らが投稿した投稿内容を削除できる' do
         # garment1を投稿したユーザーでログインする
+        basic_pass new_user_session_path
+        visit new_user_session_path
+        fill_in 'メールアドレス', with: @garment1.user.email
+        fill_in 'パスワード', with: @garment1.user.password
+        find('input.btn-primary').click
+        expect(current_path).to eq(root_path)
         # garment1に「削除」へのリンクがあることを確認する
         # 投稿を削除するとレコードの数が1減ることを確認する
         # 削除完了後、TOPページに遷移したことを確認する
